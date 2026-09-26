@@ -89,7 +89,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": '/Users/armannq/Desktop/db_drfbooking/db.sqlite3',
+        "NAME": os.getenv('DATABASE_PATH'),
     }
 }
 
