@@ -1,0 +1,903 @@
+/* =========================================
+   ОБЩИЕ СТИЛИ СТРАНИЦЫ ДЭШБОРДА
+   ========================================= */
+.hotel-booking-page {
+    background-color: #f5f5f5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #262626;
+    margin: 0;
+    padding-bottom: 60px;
+}
+
+.main-content {
+    max-width: 1100px;
+    margin: 24px auto 0 auto;
+    padding: 0 16px;
+}
+
+.hotel-container {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.hotel-dashboard-wrapper {
+    max-width: 1100px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+/* Шапка отеля (название и адрес) */
+.hotel-address-name {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+    text-align: left !important;
+}
+
+.hotel-name-dashboard {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    margin: 0 0 6px 0 !important;
+}
+
+.hotel-address {
+    font-size: 15px !important;
+    color: #595959 !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+/* =========================================
+   СЕТКА КАРТИНОК ОТЕЛЯ
+   ========================================= */
+.images-container {
+    display: grid !important;
+    grid-template-columns: 2fr 1fr 1fr !important;
+    grid-template-rows: 230px 230px 120px !important;
+    gap: 8px !important;
+    max-width: 1100px !important;
+    margin: 16px auto 32px auto !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+}
+
+.images-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; 
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.image-main {
+    grid-column: 1 / 3 !important;
+    grid-row: 1 / 3 !important;
+}
+
+.image-top-right-1 {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 2 !important;
+}
+
+.image-top-right-2 {
+    grid-column: 3 / 4 !important;
+    grid-row: 2 / 3 !important;
+}
+
+.images-bottom-row {
+    grid-column: 1 / 4 !important;
+    grid-row: 3 / 4 !important;
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr) !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.bottom-item {
+    position: relative !important;
+    width: 100% !important;
+    height: 120px !important;
+}
+
+.bottom-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 4px;
+}
+
+.photos-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    color: white !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    border-radius: 4px;
+}
+
+.hotel-description {
+    width: 100% !important;
+    max-width: 1100px !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #333333 !important;
+    margin: 20px auto 0 auto !important;
+    padding: 0 !important;
+}
+
+/* =========================================
+   СЕКЦИЯ ДАТ И ПОИСКА (AVAILABILITY)
+   ========================================= */
+.about {
+    margin-top: 24px;
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    margin-top: 24px;
+}
+
+.availability-alert {
+    background-color: #fff8e5;
+    border: 1px solid #f7b731;
+    color: #856404;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.availability-box {
+    background: #ffffff;
+    border: 3px solid #ffb700;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.change-search {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #ffffff;
+}
+
+.search-field-wrapper {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 6px 10px;
+    height: 48px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.search-field-wrapper:hover {
+    border-color: #c2c2c2;
+    background-color: #ffffff;
+}
+
+.date-field-wrapper {
+    flex: 2;
+}
+
+.guests-field-wrapper {
+    flex: 1.2;
+}
+
+.inputs-inline-group {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.date-input-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    padding: 0 4px;
+}
+
+.date-input-block.full-width {
+    width: 100%;
+    padding: 0;
+}
+
+.date-input-block:first-child {
+    border-right: 1px solid #dcdcdc;
+    margin-right: 4px;
+}
+
+.field-placeholder-label {
+    font-size: 11px;
+    color: #6b6b6b;
+    line-height: 1.2;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.booking-native-input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #262626;
+    background: transparent;
+    width: 100%;
+    padding: 0;
+    font-family: inherit;
+}
+
+.booking-search-btn {
+    background-color: #0071c2;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0 24px;
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.booking-search-btn:hover {
+    background-color: #00487a;
+}
+
+/* =========================================
+   ТАБЛИЦА НОМЕРОВ И КАТЕГОРИЙ (#bookingTable)
+   ========================================= */
+#bookingTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border: 1px solid #e7e7e7;
+    margin-top: 24px;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+#bookingTable th {
+    background-color: #003580;
+    color: #fff;
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 500;
+    font-size: 15px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#bookingTable th:last-child {
+    border-right: none;
+    width: 220px;
+}
+
+#bookingTable td {
+    padding: 16px;
+    vertical-align: top;
+    border-bottom: 1px solid #e7e7e7;
+    border-right: 1px solid #e7e7e7;
+}
+
+#bookingTable td:last-child {
+    border-right: none;
+    background-color: #fcfcfc;
+    padding: 12px;
+    vertical-align: middle !important;
+}
+
+#bookingTable tr:last-child td {
+    border-bottom: none;
+}
+
+/* Ссылки номеров и текст */
+#bookingTable td div a.room-link {
+    color: #0071c2;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 6px;
+    cursor: pointer;
+}
+
+#bookingTable td div a.room-link:hover {
+    text-decoration: underline;
+}
+
+#bookingTable td div {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+#bookingTable td p {
+    margin: 2px 0;
+    color: #666;
+}
+
+/* Колонка цены */
+#bookingTable td:nth-child(2) {
+    font-weight: 600;
+    color: #1a1a1a;
+    vertical-align: middle !important;
+}
+
+/* Селекты и кнопки в таблице */
+#bookingTable select {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: 1px solid #a2a2a2;
+    background-color: #fff;
+    font-size: 14px;
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+}
+
+#bookingTable select:focus {
+    border-color: #0071c2;
+}
+
+#bookingTable tr td button {
+    background-color: #0071c2;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+#bookingTable tr td button:hover {
+    background-color: #00487a;
+}
+
+/* Кнопка резервации */
+.reserve-sticky-container {
+    position: sticky;
+    top: 20px;
+    background-color: transparent;
+    padding: 0;
+    z-index: 5;
+}
+
+.reserve-sticky-container .reserve-main-btn {
+    width: 100%;
+    background-color: #0071c2;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.reserve-sticky-container .reserve-main-btn:hover {
+    background-color: #00487a;
+}
+
+.reserve-sticky-container .reserve-sub-text {
+    display: block;
+    font-size: 12px;
+    color: #595959;
+    margin-top: 8px;
+    text-align: left;
+}
+
+/* =========================================
+   МОДАЛЬНОЕ ОКНО КОМНАТЫ (.modal-room)
+   ========================================= */
+.modal-room {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.modal-room.active {
+    display: flex;
+}
+
+.modal-content-wrapper {
+    background: #ffffff;
+    border-radius: 12px;
+    max-width: 980px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    display: flex;
+    gap: 28px;
+    padding: 32px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    position: relative;
+    box-sizing: border-box;
+}
+
+/* Кнопка закрытия (крестик) */
+.modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: 300;
+    color: #595959;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s;
+    z-index: 10;
+    line-height: 1;
+}
+
+.modal-close-btn:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+}
+
+/* Левая колонка с фото */
+.room-imgs-container {
+    flex: 1.1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 440px;
+}
+
+.room-img-carousel {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.room-img-carousel::-webkit-scrollbar {
+    display: none;
+}
+.room-img-carousel {
+    scrollbar-width: none;
+}
+
+.room-img-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.room-imgs-under-carousel {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.room-imgs-under-carousel img {
+    width: 100%;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s, border-color 0.2s;
+    border: 2px solid transparent;
+}
+
+.room-imgs-under-carousel img:hover,
+.room-imgs-under-carousel img.active-thumb {
+    opacity: 1;
+    border-color: #0071c2;
+}
+
+/* Правая колонка с описанием и удобствами */
+.room-about-container {
+    flex: 1.3;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.room-about-container h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.room-description {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Сетка для удобств */
+.room-facilities {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 12px;
+    margin-top: 8px;
+}
+
+.facility-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.facility-icon {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Принудительно уменьшаем любой SVG внутри */
+.facility-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+    max-width: 18px !important;
+    max-height: 18px !important;
+    fill: currentColor;
+}
+
+.facility-name {
+    font-size: 12px;
+    color: #333333;
+}
+
+/* =========================================
+   МОДАЛЬНОЕ ОКНО ПОДТВЕРЖДЕНИЯ БРОНИ
+   ========================================= */
+.reserve-confirmation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.reserve-confirmation.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.confirmation-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.reserve-confirmation.active .confirmation-card {
+    transform: translateY(0);
+}
+
+.confirmation-card h3 {
+    margin-bottom: 12px;
+    font-size: 20px;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.confirmation-card p {
+    color: #4a5568;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.confirmation-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-confirm, .btn-cancel {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s;
+}
+
+.btn-confirm {
+    background-color: #0071c2;
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: #00487a;
+}
+
+.btn-cancel {
+    background-color: #edf2f7;
+    color: #4a5568;
+}
+
+.btn-cancel:hover {
+    background-color: #e2e8f0;
+}
+
+/* =========================================
+   ВСПЛЫВАЮЩИЕ УВЕДОМЛЕНИЯ (TOAST)
+   ========================================= */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.toast-notification.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.toast-notification.error {
+    background-color: #e53e3e;
+}
+
+.toast-notification.success {
+    background-color: #38a169;
+}
+
+/* =========================================
+   АДАПТИВНОСТЬ (booking.com-style reflow)
+   ========================================= */
+
+/* ----- Tablet / small laptop ----- */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 0 14px;
+    }
+
+    .hotel-container {
+        padding: 18px;
+    }
+
+    .images-container {
+        grid-template-columns: 1.6fr 1fr 1fr !important;
+        grid-template-rows: 210px 210px 110px !important;
+    }
+}
+
+/* ----- Tablet portrait / large phone ----- */
+@media (max-width: 860px) {
+    .images-container {
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: 220px 140px !important;
+    }
+
+    .image-main {
+        grid-column: 1 / 3 !important;
+        grid-row: 1 / 2 !important;
+    }
+
+    .image-top-right-1 {
+        grid-column: 1 / 2 !important;
+        grid-row: 2 / 3 !important;
+    }
+
+    .image-top-right-2 {
+        grid-column: 2 / 3 !important;
+        grid-row: 2 / 3 !important;
+    }
+
+    .images-bottom-row {
+        grid-column: 1 / 3 !important;
+        grid-row: 3 / 4 !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        grid-auto-flow: column;
+        overflow-x: auto;
+    }
+
+    .bottom-item {
+        height: 90px !important;
+        min-width: 100px;
+    }
+
+    /* Availability search stacks like the booking.com mobile widget */
+    .change-search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .date-field-wrapper,
+    .guests-field-wrapper {
+        flex: none;
+        width: 100%;
+    }
+
+    .booking-search-btn {
+        width: 100%;
+    }
+
+    /* Room table becomes a stacked card list instead of a horizontal table */
+    #bookingTable thead {
+        display: none;
+    }
+
+    #bookingTable,
+    #bookingTable tbody,
+    #bookingTable tr,
+    #bookingTable td {
+        display: block;
+        width: 100%;
+    }
+
+    #bookingTable tr {
+        border-bottom: 10px solid #f5f5f5;
+    }
+
+    #bookingTable td {
+        border-right: none;
+    }
+
+    #bookingTable td:last-child {
+        background: #fff;
+    }
+
+    .reserve-sticky-container {
+        position: static;
+    }
+
+    /* Room modal stacks photos above details */
+    .modal-content-wrapper {
+        flex-direction: column;
+        max-height: 90vh;
+        padding: 20px;
+        gap: 16px;
+    }
+
+    .room-imgs-container,
+    .room-about-container {
+        max-width: 100%;
+        flex: none;
+    }
+
+    .room-img-carousel {
+        height: 220px;
+    }
+
+    .room-facilities {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ----- Mobile phones ----- */
+@media (max-width: 480px) {
+    .hotel-container {
+        padding: 14px;
+    }
+
+    .hotel-name-dashboard {
+        font-size: 20px !important;
+    }
+
+    .images-container {
+        grid-template-rows: 180px 110px !important;
+        gap: 6px !important;
+    }
+
+    .images-bottom-row {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    .bottom-item {
+        min-width: 84px;
+    }
+
+    #bookingTable td {
+        padding: 12px;
+    }
+
+    .room-imgs-under-carousel {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .room-img-carousel {
+        height: 190px;
+    }
+
+    .modal-content-wrapper {
+        padding: 16px;
+        border-radius: 8px;
+    }
+
+    .toast-notification {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        width: auto;
+        text-align: center;
+    }
+
+    .confirmation-card {
+        padding: 20px;
+    }
+}

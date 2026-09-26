@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/admin/Static/css/admin_panel.css">
+</head>
+
+<body>
+    <header>
+        <a href="">Admin Booking.com</a>
+
+        <select id="changeLangSelector">
+            <option value="en">EN</option>
+            <option value="kk">KZ</option>
+            <option value="ru">RU</option>
+        </select>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <button class="nav-sidebar" id="sidebarHotels">Hotels</button>
+            <button class="nav-sidebar" id="sidebarRooms">Rooms</button>
+            <button class="nav-sidebar" id="sidebarBookings">Bookings</button>
+        </aside>
+
+        <div class="content" id="content">
+            <div class="content-header">
+                <div class="content-title" id="contentTitle"></div>
+                <div class="action-btns" id="actionBtn"></div>
+            </div>
+
+            <div class="contentRight" id="contentRight">
+            </div>
+        </div>
+    </main>
+
+    <div class="toast-notification" id="toastNotification">
+        <span id="toastMessage"></span>
+    </div>
+
+
+    <div class="confirmationTablet" id="confirmationTablet">
+        <p id="confirmationText"></p>
+        <div class="confirmationBtns" id="confirmationBtns">
+            <button id="confirmBtn">Confirm</button>
+            <button id="cancelConfirmBtn">Cancel</button>
+        </div>
+    </div>
+
+
+
+    <script type="module" src="/admin/Static/js/admin_panel.js"></script>
+</body>
+
+
+
+</html>

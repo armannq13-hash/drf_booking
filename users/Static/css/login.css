@@ -1,0 +1,241 @@
+/* =========================================
+   1. ОБЩИЕ СТИЛИ И СБРОС (Booking.com style)
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #262626;
+}
+
+body {
+    background-color: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: #0071c2;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   2. ШАПКА (HEADER)
+   ========================================= */
+header {
+    background-color: #003580;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+header > a:first-child {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: -0.5px;
+}
+
+header select {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+header select option {
+    background-color: #003580;
+    color: white;
+}
+
+/* =========================================
+   3. КОНТЕЙНЕР АВТОРИЗАЦИИ (CARD)
+   ========================================= */
+body > div:not(header) {
+    background-color: white;
+    max-width: 440px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 32px;
+    border-radius: 8px;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Заголовок "Sign in or create a new account" */
+body > div > h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #262626;
+    margin-bottom: 4px;
+}
+
+/* Форма входа */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+form label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #262626;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #262626;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-top: 4px;
+}
+
+form input:focus {
+    border-color: #0071c2;
+    box-shadow: 0 0 0 2px rgba(0, 113, 194, 0.15);
+}
+
+/* Кнопка Sign in */
+#loginBtn {
+    background-color: #0071c2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 6px;
+    transition: background-color 0.2s;
+}
+
+#loginBtn:hover {
+    background-color: #00487a;
+}
+
+/* Текст ссылки снизу "Havent't registered yet?" */
+body > div > p {
+    font-size: 14px;
+    color: #6b6b6b;
+    text-align: left;
+    margin-top: 4px;
+}
+
+body > div > p > a {
+    font-weight: bold;
+}
+
+/* =========================================
+   4. АДАПТИВНОСТЬ
+   ========================================= */
+
+/* Tablet / small screens: header wraps if needed */
+@media (max-width: 600px) {
+    header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px 20px;
+    }
+
+    header > a:first-child {
+        font-size: 20px;
+    }
+
+    body > div:not(header) {
+        max-width: 90%;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    header {
+        padding: 12px 16px;
+    }
+
+    body > div:not(header) {
+        margin: 20px 15px;
+        padding: 20px;
+        width: auto;
+        max-width: none;
+    }
+
+    body > div > h3 {
+        font-size: 18px;
+    }
+
+    /* 16px avoids iOS auto-zoom on focus */
+    form input[type="text"],
+    form input[type="password"] {
+        font-size: 16px;
+    }
+
+    body > div > p {
+        text-align: center;
+    }
+}
+
+/* =========================================
+   ВСПЛЫВАЮЩИЕ УВЕДОМЛЕНИЯ (TOAST)
+   ========================================= */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.toast-notification.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.toast-notification.error {
+    background-color: #e53e3e;
+}
+
+.toast-notification.success {
+    background-color: #38a169;
+}
+
+@media (max-width: 480px) {
+    .toast-notification {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        width: auto;
+        text-align: center;
+    }
+}

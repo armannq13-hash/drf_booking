@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/users/Static/css/register.css">
+</head>
+
+<body>
+    <header>
+        <a href="/hotels/templates/home.html">Booking.com</a>
+
+        <select>
+            <option>EN</option>
+            <option>KZ</option>
+            <option>RU</option>
+        </select>
+    </header>
+
+    <form>
+
+        <div>
+            <label id="usernameLabel">Username</label>
+            <input type="text" required placeholder="Username" id="username">
+
+            <label id="passwordLabel">Password</label>
+            <input type="password" required placeholder="Password" id="password">
+
+            <label id="passwordConfirmLabel">Password confirmation</label>
+            <input type="password" required placeholder="Confirm your password" id="password2">
+
+            <label id="phoneNumberLabel">Phone number</label>
+            <input type="phoneNumber" required placeholder="Your phone number" id="phoneNumber">
+        </div>
+
+        <div>
+            <button type="submit" id="registerBtn">Register</button>
+            <label>
+                <input type="checkbox" id="isBusinessCheck"> <span id="isBusiness">Create a business account?</span>
+            </label>
+        </div>
+    </form>
+    <p><span id="alreadySignedIn">Already signed in?</span> <a href="/users/templates/login.html" id="signInLink">
+        Sign in</a>
+    </p>
+
+    <div class="toast-notification" id="toastNotification">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script type="module" src="/users/Static/js/register.js"></script>
+</body>
+
+</html>

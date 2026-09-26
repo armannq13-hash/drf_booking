@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/users/Static/css/login.css">
+</head>
+<body>
+    <header>
+        <a href="/hotels/templates/home.html">Booking.com</a>
+
+        <select>
+            <option>EN</option>
+            <option>KZ</option>
+            <option>RU</option>
+        </select>
+    </header>
+
+    <div>
+    <h3 id="signInOrCreate">Sign in or create a new account</h3>
+    <form>
+        <label id="usernameLabel">Username</label>
+        <input type="text" placeholder="Enter your username" id="usernameLogin">
+        <label id="passwordLabel">Password</label>
+        <input type="password" placeholder="Enter your password" id="passwordLogin">
+        <button type="submit" id="loginBtn">Sign in</button>
+    </form>
+    <p><span id="haventRegisteredYet">Havent't registered yet?</span> <a href="/users/templates/register.html" id="register">Register</a> </p>
+
+
+    <div class="toast-notification" id="toastNotification">
+        <span id="toastMessage"></span>
+    </div>
+</div>
+
+<script type="module" src="/users/Static/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/users/Static/css/user-profile.css">
+
+</head>
+
+<body>
+
+    <header>
+        <a id="bookingComLink" href="/hotels/templates/home.html">Booking.com</a>
+        <div>
+            <select id="changeLangSelector">
+                <option value="en">EN</option>
+                <option value="kk">KZ</option>
+                <option value="ru">RU</option>
+            </select>
+
+
+            <a href="/admin/templates/admin_panel.html" target="_blank" id="listPropertyLink"></a>
+
+            <div id="isAuthenticatedOrNotDiv">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Page Container -->
+    <div class="main-container" >
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+            <div class="sidebar-title" id="sidebarTitle"></div>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#" class="nav-link active" id="myBookingsNav"></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" id="myDataNav"></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" id="SettingsNav"></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" id="LogOutNav"></a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content" id="content">
+            
+        </div>
+    </div>
+
+    <div class="reserve-cancel-confirmation" id="reserveCancelConfirmation">
+        <div class="confirmation-card">
+            <h3 id="confirmOrCancel"></h3>
+            <p id="reserveCancelConfirmationText"></p>
+            <div class="confirmation-actions">
+                <button id="reserveCancelConfirmationBtn" class="btn-confirm">Confirm</button>
+                <button id="reserveCancelCancelBtn" class="btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal error shower -->
+    <div class="toast-notification" id="toastNotification">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="/users/Static/js/user-profile.js" type="module"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking.com</title>
+    <link rel="stylesheet" href="/hotels/Static/css/home.css">
+    <link rel="stylesheet" href="/hotels/Static/css/propertyDashboard.css">
+</head>
+
+<body>
+    <header>
+        <a id="bookingComLink">Booking.com</a>
+        <div>
+            <select id="changeLangSelector">
+                <option value="en">EN</option>
+                <option value="kk">KZ</option>
+                <option value="ru">RU</option>
+            </select>
+
+
+            <a href="/admin/templates/admin_panel.html" target="_blank" id="listPropertyLink">List your property</a>
+
+            <div id="isAuthenticatedOrNotDiv">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <form class="search-container" id="searchForm"></form>
+        <div id="contentContainer" class="content-container"></div>
+    </main>
+
+    <div class="toast-notification" id="toastNotification">
+        <span id="toastMessage"></span>
+    </div>
+
+</body>
+
+<script type="module" src="/hotels/Static/js/home.js"></script>
+
+</html>

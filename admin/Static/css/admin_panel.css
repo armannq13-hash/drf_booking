@@ -1,0 +1,661 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Шапка (Header) */
+header {
+    background-color: #003580; /* Фирменный синий Booking.com */
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    height: 60px;
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+header select {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+header select option {
+    background-color: #003580;
+    color: #ffffff;
+}
+
+/* Основной контейнер */
+main {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 60px);
+}
+
+/* Сайдбар (Sidebar) */
+aside.sidebar {
+    width: 240px;
+    background-color: #ffffff;
+    border-right: 1px solid #e7e7e7;
+    display: flex;
+    flex-direction: column;
+    padding-top: 16px;
+}
+
+.nav-sidebar {
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #262626;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.nav-sidebar:hover {
+    background-color: #ebf3ff;
+    color: #0071c2;
+}
+
+/* Правая область контента (Content) */
+.content {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.content-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #262626;
+}
+
+/* Кнопки действий */
+.add-btn, #saveHotelBtn, #saveRoomBtn, #saveFacilityBtn {
+    background-color: #0071c2; /* Фирменный голубой цвет кнопок */
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.add-btn:hover, #saveHotelBtn:hover, #saveRoomBtn:hover, #saveFacilityBtn:hover {
+    background-color: #00487a;
+}
+
+#cancelSaveHotelBtn, #cancelSaveRoomBtn, #cancelSaveFacilityBtn {
+    background-color: #ffffff;
+    color: #595959;
+    border: 1px solid #c6c6c6;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+#cancelSaveHotelBtn:hover, #cancelSaveRoomBtn:hover, #cancelSaveFacilityBtn:hover {
+    background-color: #f5f5f5;
+}
+
+/* Таблицы */
+#dashboardTable {
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#dashboardTable th {
+    background-color: #f5f5f5;
+    color: #595959;
+    text-align: left;
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#dashboardTable td {
+    padding: 14px 16px;
+    font-size: 14px;
+    border-bottom: 1px solid #e7e7e7;
+    color: #262626;
+}
+
+#dashboardTable tr:hover {
+    background-color: #f9f9f9;
+}
+
+#dashboardTable td div a {
+    color: #0071c2;
+    cursor: pointer;
+    margin-right: 12px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+#dashboardTable td div a:hover {
+    text-decoration: underline;
+}
+
+/* Формы добавления (Отображаются динамически) */
+form {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 900px;
+}
+
+form h3 {
+    font-size: 16px;
+    color: #262626;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+form label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #262626;
+    margin-bottom: 6px;
+    margin-top: 14px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #c6c6c6;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333333;
+    outline: none;
+    background-color: #ffffff;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #0071c2;
+    box-shadow: 0 0 0 1px #0071c2;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Стилизация чекбоксов и списков */
+form input[type="checkbox"] {
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+form label input[type="checkbox"] + span {
+    font-weight: normal;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Группировка чекбоксов для удобства */
+form label:has(input[type="checkbox"]) {
+    display: inline-block;
+    margin-right: 16px;
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+form input[type="file"] {
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* ==============CONFIRM==============*/
+/* Само модальное окно скрыто по умолчанию */
+#confirmationTablet {
+    display: none; /* Скрыто до тех пор, пока ты не вызовешь его в JS */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 24px 28px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 420px;
+    z-index: 10000;
+}
+
+/* Класс, который ты будешь вешать через JS (например, element.classList.add('active')), чтобы оно плавно появилось */
+#confirmationTablet.active {
+    display: block;
+    animation: scaleUp 0.2s ease-in-out;
+}
+
+/* Плавное появление по центру */
+@keyframes scaleUp {
+    from {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Текст внутри окна */
+#confirmationTablet p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+/* Контейнер для кнопок */
+#confirmationBtns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+/* Кнопка Confirm (удаления/подтверждения) */
+#confirmBtn {
+    background-color: #d93838;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.15s ease;
+}
+
+#confirmBtn:hover {
+    background-color: #b52b2b;
+}
+
+/* Кнопка Cancel */
+#cancelConfirmBtn {
+    background-color: #ffffff;
+    color: #0071c2;
+    border: 1px solid #0071c2;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.15s ease;
+}
+
+#cancelConfirmBtn:hover {
+    background-color: #ebf3ff;
+}
+
+/* ========================================== */
+/* Стили для иконок и чекбоксов facilities      */
+/* ========================================== */
+
+/* Контейнер для каждого чекбокса удобства (переопределяем стандартный тег label) */
+form label:has(.addRoomFacilities) {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    background-color: #f9f9f9;
+    border: 1px solid #e7e7e7;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-right: 10px;
+    margin-top: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Эффект при наведении на карточку удобства */
+form label:has(.addRoomFacilities):hover {
+    border-color: #0071c2;
+    background-color: #ebf3ff;
+}
+
+/* Скрываем стандартный громоздкий чекбокс, но оставляем его функциональным */
+form label:has(.addRoomFacilities) input.addRoomFacilities {
+    cursor: pointer;
+    accent-color: #0071c2; /* Делаем галочку фирменного синего цвета */
+    width: 16px;
+    height: 16px;
+    margin: 0;
+}
+
+/* Стили для блока с иконкой */
+form label:has(.addRoomFacilities) .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+/* Точная настройка SVG внутри иконки (размер и цвет) */
+form label:has(.addRoomFacilities) .icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+    fill: #595959; /* Цвет иконки по умолчанию */
+}
+
+/* Изменение цвета иконки, если чекбокс выбран */
+form label:has(.addRoomFacilities):has(input:checked) .icon-wrapper svg {
+    fill: #0071c2;
+}
+
+/* Текст названия удобства */
+form label:has(.addRoomFacilities) span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #262626;
+    cursor: pointer;
+}
+
+/* Подсветка всей плашки, когда она отмечена */
+form label:has(.addRoomFacilities:checked) {
+    background-color: #ebf3ff;
+    border-color: #0071c2;
+}
+
+/* ========================================== */
+/* Стили для поля выбора файлов (Media)       */
+/* ========================================== */
+
+form input[type="file"] {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #c6c6c6;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #595959;
+    background-color: #ffffff;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+/* Стилизуем саму кнопку "Выбрать файл" внутри инпута */
+form input[type="file"]::file-selector-button {
+    background-color: #f5f5f5;
+    color: #262626;
+    border: 1px solid #c6c6c6;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 12px;
+    transition: background-color 0.15s ease;
+}
+
+/* Эффект при наведении на кнопку выбора файла */
+form input[type="file"]::file-selector-button:hover {
+    background-color: #e7e7e7;
+}
+
+/* Фокус, чтобы поле выглядело так же, как текстовые инпуты */
+form input[type="file"]:focus {
+    border-color: #0071c2;
+    box-shadow: 0 0 0 1px #0071c2;
+    outline: none;
+}
+
+/* =========================================
+   ВСПЛЫВАЮЩИЕ УВЕДОМЛЕНИЯ (TOAST)
+   ========================================= */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 16px 24px;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 1100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.toast-notification.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.toast-notification.error {
+    background-color: #e53e3e;
+}
+
+.toast-notification.success {
+    background-color: #38a169;
+}
+
+/* =========================================
+   АДАПТИВНОСТЬ (booking.com-style reflow)
+   ========================================= */
+
+/* ----- Tablet / small laptop ----- */
+@media (max-width: 1024px) {
+    aside.sidebar {
+        width: 200px;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    form {
+        max-width: 100%;
+    }
+}
+
+/* ----- Tablet portrait / large phone: sidebar becomes a horizontal bar ----- */
+@media (max-width: 860px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        overflow: auto;
+    }
+
+    main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    aside.sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 8px 12px;
+        gap: 6px;
+        border-right: none;
+        border-bottom: 1px solid #e7e7e7;
+    }
+
+    .nav-sidebar {
+        white-space: nowrap;
+        padding: 10px 16px;
+        border-radius: 4px;
+    }
+
+    .content {
+        padding: 16px;
+        overflow-y: visible;
+    }
+
+    .content-header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    /* Dashboard tables: header row is visually hidden, each cell instead
+       shows its own label to the left via data-label (see render_*.js) */
+    #dashboardTable thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+        padding: 0;
+        margin: -1px;
+    }
+
+    #dashboardTable,
+    #dashboardTable tbody,
+    #dashboardTable tr,
+    #dashboardTable td {
+        display: block;
+        width: 100%;
+    }
+
+    #dashboardTable tr {
+        margin-bottom: 12px;
+        border: 1px solid #e7e7e7;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    #dashboardTable td {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 10px 14px;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: right;
+    }
+
+    #dashboardTable tr td:last-child {
+        border-bottom: none;
+        background-color: #fcfcfc;
+    }
+
+    #dashboardTable td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        font-size: 12px;
+        color: #595959;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        text-align: left;
+        margin-right: 12px;
+        flex-shrink: 0;
+    }
+
+    #dashboardTable td div {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+    }
+
+    form {
+        padding: 18px;
+    }
+}
+
+/* ----- Mobile phones ----- */
+@media (max-width: 480px) {
+    header {
+        padding: 10px 16px;
+        height: auto;
+    }
+
+    header a {
+        font-size: 16px;
+    }
+
+    .content-title {
+        font-size: 18px;
+    }
+
+    form {
+        padding: 14px;
+    }
+
+    form label:has(.addRoomFacilities) {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #confirmationTablet {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #dashboardTable td {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    #dashboardTable td::before {
+        font-size: 11px;
+    }
+
+    .toast-notification {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        width: auto;
+        text-align: center;
+    }
+}

@@ -1,0 +1,536 @@
+/* =========================================
+   1. ОБЩИЕ СТИЛИ И СБРОС (Booking.com style)
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #262626;
+}
+
+body {
+    background-color: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =========================================
+   2. ШАПКА (HEADER)
+   ========================================= */
+header {
+    background-color: #003580;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+}
+
+header > a:first-child {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    letter-spacing: -0.5px;
+}
+
+header > div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+header select {
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+header select option {
+    background-color: #003580;
+    color: white;
+}
+
+header > div > a:not(:first-child) {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+header > div > a:not(:first-child):hover {
+    text-decoration: underline;
+}
+
+/* Кнопки в шапке */
+#isAuthenticatedOrNotDiv {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#isAuthenticatedOrNotDiv button {
+    background-color: white;
+    color: #003580;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#isAuthenticatedOrNotDiv button:hover {
+    background-color: #f0f0f0;
+}
+
+.username {
+    font-weight: bold;
+    color: white;
+}
+
+/* =========================================
+   3. ГЛАВНАЯ СЕКЦИЯ И ПОИСК (SEARCH BAR)
+   ========================================= */
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 20px;
+}
+
+.search-container {
+    background-color: #febb02; /* Фирменный желтый Booking.com */
+    padding: 4px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr auto;
+    gap: 4px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.search-container > div {
+    background-color: white;
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column; /* Всегда колонка: метка сверху, инпут снизу */
+    justify-content: center;
+}
+
+.search-container > div:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+.search-container label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    display: block;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #262626;
+    background: transparent;
+    width: 100%;
+}
+
+/* Специальный блок для дат (разделение на Check-in и Check-out внутри одной ячейки сетки) */
+.search-container > div:nth-child(2) {
+    flex-direction: row; /* Оставляем в ряд сами даты */
+    gap: 10px;
+    padding: 6px 15px; /* Немного уменьшаем отступы по вертикали для компактности */
+}
+
+.search-container > div:nth-child(2) > div {
+    display: flex;
+    flex-direction: column; /* Внутри каждого инпута даты метка строго над полем */
+    flex: 1;
+    padding: 4px 0;
+    background: transparent;
+}
+
+/* Кнопка поиска */
+.search-container button[type="submit"] {
+    background-color: #0071c2;
+    color: white;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0 30px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-container button[type="submit"]:hover {
+    background-color: #00487a;
+}
+
+/* =========================================
+   4. МАКЕТ: ФИЛЬТРЫ СЛЕВА, ОТЕЛЯ СПРАВА
+   ========================================= */
+.content-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr; /* Немного компактнее фильтры слева */
+    gap: 24px;
+    align-items: start; /* Выравнивание по верхнему краю */
+}
+
+/* =========================================
+   5. САЙДБАР С ФИЛЬТРАМИ (ЛЕВАЯ КОЛОНКА)
+   ========================================= */
+.filters-container {
+    background-color: white;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.filters-header h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.filter-section {
+    margin-bottom: 16px;
+}
+
+.filter-group-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #262626;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-label {
+    display: flex;
+    align-items: center; /* Чекбокс и текст строго по центру друг друга */
+    gap: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #333;
+}
+
+.filter-label input[type="checkbox"] {
+    accent-color: #0071c2;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.checkbox-text {
+    user-select: none;
+    line-height: 1.2;
+}
+
+/* =========================================
+   6. СПИСОК ОТЕЛЕЙ (ПРАВАЯ КОЛОНКА)
+   ========================================= */
+.hotels-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.hotel-card-item {
+    background-color: white;
+    border: 1px solid #e7e7e7;
+    border-radius: 8px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: 220px 1fr 180px;
+    gap: 20px;
+    align-items: center; /* Центрирование содержимого карточки по вертикали */
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.hotel-card-item:hover {
+    border-color: #0071c2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.hotel-card-img img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.hotel-card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Текст названия и города ровно по центру блока */
+    gap: 4px;
+}
+
+.hotel-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #0071c2;
+}
+
+.hotel-card-item:hover .hotel-name {
+    text-decoration: underline;
+}
+
+.hotel-location {
+    font-size: 13px;
+    color: #6b6b6b;
+}
+
+.hotel-card-action {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.availability-btn {
+    background-color: #0071c2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.availability-btn:hover {
+    background-color: #00487a;
+}
+
+/* =========================================
+   СТИЛЬ ПРОФИЛЯ В ШАПКЕ (ЧИСТЫЙ И АККУРАТНЫЙ)
+   ========================================= */
+
+#isAuthenticatedOrNotDiv {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-profile-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 14px;
+}
+
+.welcome-text {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-left: 2px;
+}
+
+.logout-link {
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.logout-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+}
+
+/* =========================================
+   7. АДАПТИВНОСТЬ (booking.com-style reflow)
+   ========================================= */
+
+/* ----- Tablet / small laptop ----- */
+@media (max-width: 1024px) {
+    main {
+        padding: 20px 16px;
+    }
+
+    .content-layout {
+        grid-template-columns: 220px 1fr;
+        gap: 16px;
+    }
+
+    .hotel-card-item {
+        grid-template-columns: 180px 1fr 150px;
+        gap: 14px;
+    }
+}
+
+/* ----- Tablet portrait / large phone ----- */
+@media (max-width: 860px) {
+    header {
+        flex-wrap: wrap;
+        row-gap: 12px;
+        padding: 14px 20px;
+    }
+
+    header > div {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    /* Search bar reflows into labeled areas instead of one row */
+    .search-container {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "dest dest"
+            "dates guests"
+            "btn btn";
+    }
+
+    .search-container > div:first-child {
+        grid-area: dest;
+        border-radius: 6px 6px 0 0;
+    }
+
+    .search-container > div:nth-child(2) {
+        grid-area: dates;
+    }
+
+    .search-container > div:nth-child(3) {
+        grid-area: guests;
+    }
+
+    .search-container button[type="submit"] {
+        grid-area: btn;
+        border-radius: 0 0 6px 6px;
+        padding: 14px;
+    }
+
+    /* Filters move above the results as a horizontal strip */
+    .content-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-container {
+        order: -1;
+    }
+
+    .hotel-card-item {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 12px;
+    }
+
+    .hotel-card-img img {
+        height: 190px;
+    }
+
+    .hotel-card-action {
+        align-items: stretch;
+    }
+
+    .availability-btn {
+        width: 100%;
+        padding: 10px 16px;
+    }
+}
+
+/* ----- Mobile phones ----- */
+@media (max-width: 480px) {
+    header {
+        padding: 12px 16px;
+    }
+
+    header > a:first-child {
+        font-size: 20px;
+    }
+
+    header > div {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    #isAuthenticatedOrNotDiv {
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    main {
+        padding: 16px 12px;
+    }
+
+    .search-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "dest"
+            "dates"
+            "guests"
+            "btn";
+        padding: 6px;
+    }
+
+    .search-container > div:first-child {
+        border-radius: 6px 6px 0 0;
+    }
+
+    .search-container > div:nth-child(2) {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .search-container > div:nth-child(2) > div:first-child {
+        border-right: none !important;
+        margin-right: 0 !important;
+    }
+
+    .search-container button[type="submit"] {
+        border-radius: 0 0 6px 6px;
+    }
+
+    .filters-container {
+        padding: 12px;
+    }
+
+    .filter-options {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+    }
+
+    .hotel-name {
+        font-size: 16px;
+    }
+
+    .hotel-card-img img {
+        height: 160px;
+    }
+}
