@@ -1,6 +1,9 @@
 # drf_booking
 Full-stack Booking.com clone built with Django REST Framework & JS. Features 3-language auto-translation via DeepL, SimpleJWT auth, advanced hotel filtering, reservation management, and a custom admin dashboard.
-# Booking.com Clone (DRF + Vanilla JS)
+
+
+
+#  Booking.com Clone (DRF + Vanilla JS)
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Django REST Framework](https://img.shields.io/badge/Django_REST_Framework-3.14+-red?style=for-the-badge&logo=django&logoColor=white)](https://www.django-rest-framework.org/)
@@ -11,7 +14,7 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 * **Authentication & Authorization:** Secure user registration, login, and token refresh using `SimpleJWT`.
 * **Automated 3-Language Translation:** Dynamic translation of hotel details and descriptions using integrated **DeepL API**.
@@ -32,7 +35,20 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
 
 ---
 
-## 🚀 Quick Start & Installation
+## 📋 API Endpoints Overview
+
+| Endpoint | Method | Description | Auth Required |
+| :--- | :--- | :--- | :--- |
+| `/api/users/register/` | `POST` | Create new user account | No |
+| `/api/users/token/` | `POST` | Obtain JWT token pair | No |
+| `/api/hotels/` | `GET` | Fetch hotel listings with filtering | No |
+| `/api/hotels/<id>/` | `GET` | View single hotel details with DeepL translation | No |
+| `/api/bookings/` | `POST` | Reserve room dates | Yes (JWT) |
+| `/api/admin/` | `GET/POST` | Managing dashboard access for owners/admins | Yes (Admin) |
+
+---
+
+## 🚀 Quick Start & Local Setup
 
 ### Prerequisites
 * Python 3.10+
@@ -40,7 +56,26 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
 
 ### Setup Instructions
 
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/armannq13-hash/drf_booking.git](https://github.com/armannq13-hash/drf_booking.git)
-   cd drf_booking
+1. **Clone the repository:**  
+   `git clone [https://github.com/armannq13-hash/drf_booking.git](https://github.com/armannq13-hash/drf_booking.git)`  
+   `cd drf_booking`
+
+2. **Create and activate a virtual environment:**  
+   `python -m venv venv`  
+   `source venv/bin/activate` *(On Windows: `venv\Scripts\activate`)*
+
+3. **Install dependencies:**  
+   `pip install -r requirements.txt`
+
+4. **Configure Environment Variables:**  
+   Create a `.env` file in the root folder with:  
+   `SECRET_KEY=your_django_secret_key`  
+   `DEBUG=True`  
+   `DEEPL_API_KEY=your_deepl_api_key`
+
+5. **Apply Database Migrations:**  
+   `python manage.py migrate`
+
+6. **Run the Development Server:**  
+   `python manage.py runserver`  
+   Access the API locally at `[http://127.0.0.1:8000/](http://127.0.0.1:8000/)`.
