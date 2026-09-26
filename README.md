@@ -1,6 +1,6 @@
 # drf_booking
 Full-stack Booking.com clone built with Django REST Framework & JS. Features 3-language auto-translation via DeepL, SimpleJWT auth, advanced hotel filtering, reservation management, and a custom admin dashboard.
-# 🏨 Booking.com Clone (DRF + Vanilla JS)
+# Booking.com Clone (DRF + Vanilla JS)
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Django REST Framework](https://img.shields.io/badge/Django_REST_Framework-3.14+-red?style=for-the-badge&logo=django&logoColor=white)](https://www.django-rest-framework.org/)
