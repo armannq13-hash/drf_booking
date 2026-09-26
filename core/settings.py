@@ -163,3 +163,7 @@ LANGUAGES = [
     ('en', 'English'),
     ('kk', 'Қазақша'),
 ]
+
+# Вместо реальной отправки писем выводим их в консоль сервера
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
