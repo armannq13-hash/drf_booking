@@ -68,7 +68,7 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
    Create a `.env` file in the root directory:  
    `SECRET_KEY=your_django_secret_key`  
    `DEBUG=True/False`  
-   `DEEPL_API_KEY=your_deepl_api_key (you can get it in deepl.com)`
+   `DEEPL_API_KEY=your_deepl_api_key (you can get it in deepl.com)`    
    `DATABASE_PATH=your_database_absolute_path`
    Ensure your frontend origin is added to `CORS_ALLOWED_ORIGINS` in Django settings (e.g., `http://localhost:5500` or `http://127.0.0.1:5500`).
 
