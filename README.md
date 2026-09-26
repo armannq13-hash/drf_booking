@@ -39,12 +39,11 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
 
 | Endpoint | Method | Description | Auth Required |
 | :--- | :--- | :--- | :--- |
-| `/api/users/register/` | `POST` | Create new user account | No |
-| `/api/users/token/` | `POST` | Obtain JWT token pair | No |
-| `/api/hotels/` | `GET` | Fetch hotel listings with filtering | No |
-| `/api/hotels/<id>/` | `GET` | View single hotel details with DeepL translation | No |
-| `/api/bookings/` | `POST` | Reserve room dates | Yes (JWT) |
-| `/api/admin/` | `GET/POST` | Managing dashboard access for owners/admins | Yes (Admin) |
+| `/api/register/` | `POST` | Create new user account | No |
+| `/api/token/` | `POST` | Obtain JWT token pair | No |
+| `/home/filter/rooms/` | `GET` | Fetch rooms listings with filtering | No |
+| `/reserve/` | `POST` | Reserve room dates | Yes (JWT) |
+
 
 ---
 
