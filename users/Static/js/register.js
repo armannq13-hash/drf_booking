@@ -27,7 +27,7 @@ async function register_user() {
     const phoneNumber = document.getElementById('phoneNumber').value;
     const isBusiness = document.getElementById('isBusinessCheck').checked;
 
-    if (!username || !password || !password2 || !phoneNumber || !isBusiness){
+    if (!username || !password || !password2 || !phoneNumber){
         showToast(`${t('fillAllFields')}`)
     }
 
