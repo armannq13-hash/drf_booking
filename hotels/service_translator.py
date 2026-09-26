@@ -1,6 +1,10 @@
 # from langdetect import detect, DetectorFactory
 # from deep_translator import GoogleTranslator
 import deepl
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 # ============HOTEL MODEL==============
 def tranlsate_hotel_model(hotel):
     if not hotel.hotel_description:
@@ -99,7 +103,7 @@ def translate_hotel_description(hotel):
         return 
     
     supported_langs = {'en': 'EN-GB', 'kk': 'KK', 'ru': 'RU'}
-    translator = deepl.Translator('f3d7538b-b82b-40b3-917b-b1de67195323:fx')
+    translator = deepl.Translator(os.getenv('DEEPL_API_KEY'))
     
     for lang, target_code in supported_langs.items():
         try:
