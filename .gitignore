@@ -182,3 +182,7 @@ cython_debug/
 
 # Media files (user uploads)
 media/
+
+# .DS_Store
+.DS_Store
+
