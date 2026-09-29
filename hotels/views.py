@@ -215,7 +215,16 @@ def ai_chat_bot(request):
     
     # ============================
     gemini_key = os.getenv('GEMINI_API_KEY')
-    gemini_model = os.getenv('GEMINI_MODEL')
+    
+    
+    backup_gemini_models = [
+        'gemini-3.1-flash-lite',
+        'gemini-3.5-flash',
+        'gemini-2.5-flash',
+    ]
+    
+    
+    client = genai.Client(api_key=gemini_key)
     # ============================
     facilities_set = [facility.name for facility in Facilities.objects.all()]
     categories_set =[category.name for category in RoomCategory.objects.all()]
@@ -236,32 +245,41 @@ def ai_chat_bot(request):
         "{user_input}"
     """
     
+    data = None
+    success1 = False
     
-    client = genai.Client(api_key=gemini_key)
-    response = client.models.generate_content(
-        model=gemini_model,
-        contents=filter_prompt
-    )
-    
-    if not response or not response.text:
-        return Response({
-            'error': 'No response'
-        }, status=500)
-    
-    try:
-        raw_text = response.text.strip()
-        
-        if raw_text.startswith('```json'):
-            raw_text = raw_text[7:]
-        if raw_text.endswith('```'):
-            raw_text = raw_text[:-3]
+    for model_name in backup_gemini_models:
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=filter_prompt
+            )
             
-        data = json.loads(raw_text.strip())
+            if not response or not response.text:
+                continue
+                
+            
+            raw_text = response.text.strip()
+            
+            if raw_text.startswith('```json'):
+                raw_text = raw_text[7:]
+            if raw_text.endswith('```'):
+                raw_text = raw_text[:-3]
+                
+            data = json.loads(raw_text.strip())
+            success1 = True
+            break 
+                
+        except (json.JSONDecodeError, Exception):
+            continue
         
-    except json.JSONDecodeError:
+    if not success1 or not data:
         return Response({
-            'error': 'Failed to parse AI response'
-        }, status=500)
+            'error': 'All AI models are busy right now'
+        }, status=status.HTTP_503_SERVICE_UNAVAILABLE)
+                
+            
+                
         
         
     country = data.get('country')
@@ -358,20 +376,36 @@ def ai_chat_bot(request):
            -- Usefull lifehacks etc
            
         !IMPORTANT: the response must not contain extra symbols like #, * etc.You can use emojis if needed
+        !IMPORTANT: Do not make the text too long! 
         
     """
     
-    response2 = client.models.generate_content(
-        model=gemini_model,
-        contents=response_prompt
-    )
     
-    if not response2 or not response2.text:
+    
+    response2 = None
+    success2 = False
+    
+    for model_name in backup_gemini_models:
+        try:
+            response = client.models.generate_content(
+                model=model_name,
+                contents=response_prompt
+            )
+            
+            if response and response.text:
+                response2 = response.text
+                success2 = True
+                break
+        
+        except Exception as e:
+            continue
+    
+    if not success2:
         return Response({
-            'error': 'No response'
-        }, status=500)
+            'error': 'All AI models are busy right now'
+        }, status=status.HTTP_503_SERVICE_UNAVAILABLE)
         
     return Response({
-        'ai_response': response2.text
+        'ai_response': response2
     }, status=status.HTTP_200_OK)
 
