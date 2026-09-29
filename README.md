@@ -71,7 +71,7 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
    `DEBUG=True/False`  
    `DEEPL_API_KEY=your_deepl_api_key (you can get it in deepl.com)`    
    `DATABASE_PATH=your_database_absolute_path`    
-   `GEMINI_API_KEY=your_gemini_api_key (you can get a free one on https://ai.google.dev/gemini-api/docs/api-key)`
+   `GEMINI_API_KEY=your_gemini_api_key (you can get a free one on https://ai.google.dev/gemini-api/docs/api-key)`    
    `GEMINI_MODEL=gemini_model_you_use`    
    Ensure your frontend origin is added to `CORS_ALLOWED_ORIGINS` in Django settings (e.g., `http://localhost:5500` or `http://127.0.0.1:5500`).
 
