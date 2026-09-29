@@ -1,0 +1,284 @@
+/* =========================================
+   AI TOUR AGENT CHAT
+   Uses the same palette as home.css:
+   navy #003580 · blue #0071c2 · dark blue #00487a · yellow #febb02
+   ========================================= */
+
+/* =========================================
+   1. OPEN BUTTON (bottom right)
+   ========================================= */
+.open-ai-chat-btn {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 1060;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    background-color: #0071c2;
+    color: #ffffff;
+    border: 3px solid #febb02;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 53, 128, 0.35);
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.open-ai-chat-btn::before {
+    content: "\2726"; /* ✦ */
+    color: #febb02;
+    font-size: 18px;
+}
+
+.open-ai-chat-btn:hover {
+    background-color: #00487a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 53, 128, 0.4);
+}
+
+.open-ai-chat-btn:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* When the chat is open, the same button becomes the close (X) in the header */
+body:has(.ai-chat-container.active) .open-ai-chat-btn {
+    top: 12px;
+    right: 14px;
+    bottom: auto;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+    gap: 0;
+    font-size: 0;
+    background-color: rgba(255, 255, 255, 0.14);
+    border: none;
+    box-shadow: none;
+    transform: none;
+}
+
+body:has(.ai-chat-container.active) .open-ai-chat-btn::before {
+    content: "\2715"; /* ✕ */
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+body:has(.ai-chat-container.active) .open-ai-chat-btn:hover {
+    background-color: rgba(255, 255, 255, 0.28);
+}
+
+/* =========================================
+   2. CHAT PANEL (right side, full height)
+   ========================================= */
+.ai-chat-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1050;
+    width: 400px;
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    border-left: 1px solid #e7e7e7;
+    box-shadow: -8px 0 30px rgba(0, 0, 0, 0.18);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.3s ease, visibility 0.3s;
+}
+
+.ai-chat-container.active {
+    transform: translateX(0);
+    visibility: visible;
+}
+
+/* Header (drawn with a pseudo-element, no extra HTML needed) */
+.ai-chat-container::before {
+    content: "\2726  AI tour agent";
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    height: 64px;
+    padding: 0 64px 0 20px;
+    background-color: #003580;
+    border-bottom: 3px solid #febb02;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+/* =========================================
+   3. MESSAGES AREA
+   ========================================= */
+.ai-chat-window {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-message {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 16px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+.chat-message::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-message::-webkit-scrollbar-thumb {
+    background-color: #c9c9c9;
+    border-radius: 3px;
+}
+
+.message {
+    max-width: 85%;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* User: right, blue */
+.message.user-message {
+    align-self: flex-end;
+    background-color: #0071c2;
+    color: #ffffff;
+    border-radius: 14px 14px 4px 14px;
+}
+
+/* Bot: left, white card */
+.message.bot-message {
+    align-self: flex-start;
+    background-color: #ffffff;
+    color: #262626;
+    border: 1px solid #e7e7e7;
+    border-radius: 14px 14px 14px 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* Loading */
+.message.bot-message.loading {
+    color: #6b6b6b;
+    font-style: italic;
+    animation: aiChatPulse 1.2s ease-in-out infinite;
+}
+
+/* Error */
+.message.bot-message.error {
+    background-color: #fdf0ef;
+    border-color: #e53e3e;
+    color: #b42318;
+}
+
+@keyframes aiChatPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+}
+
+/* =========================================
+   4. INPUT FORM
+   ========================================= */
+.ai-chat-bot-form {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom, 0px));
+    background-color: #ffffff;
+    border-top: 1px solid #e7e7e7;
+}
+
+.ai-chat-bot-form input {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0 14px;
+    background-color: #f8f9fa;
+    color: #262626;
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.ai-chat-bot-form input::placeholder {
+    color: #8a8a8a;
+}
+
+.ai-chat-bot-form input:focus {
+    background-color: #ffffff;
+    border-color: #0071c2;
+    box-shadow: 0 0 0 3px rgba(0, 113, 194, 0.15);
+}
+
+.ai-chat-bot-form button {
+    flex-shrink: 0;
+    height: 44px;
+    padding: 0 20px;
+    background-color: #0071c2;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.ai-chat-bot-form button:hover {
+    background-color: #00487a;
+}
+
+.ai-chat-bot-form button:focus-visible {
+    outline: 3px solid #febb02;
+    outline-offset: 2px;
+}
+
+/* =========================================
+   5. RESPONSIVE
+   ========================================= */
+@media (max-width: 480px) {
+    .ai-chat-container {
+        width: 100%;
+        border-left: none;
+    }
+
+    .open-ai-chat-btn {
+        right: 16px;
+        bottom: 16px;
+        padding: 12px 18px;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-chat-container,
+    .open-ai-chat-btn {
+        transition: none;
+    }
+
+    .message.bot-message.loading {
+        animation: none;
+    }
+}

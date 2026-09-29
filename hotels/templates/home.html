@@ -7,6 +7,7 @@
     <title>Booking.com</title>
     <link rel="stylesheet" href="/hotels/Static/css/home.css">
     <link rel="stylesheet" href="/hotels/Static/css/propertyDashboard.css">
+    <link rel="stylesheet" href="/hotels/Static/css/ai-chat.css">
 </head>
 
 <body>
@@ -32,6 +33,23 @@
         <div id="contentContainer" class="content-container"></div>
     </main>
 
+    <!-- AI CHAT -->
+    <button id="openAiChatBtn" class="open-ai-chat-btn">Smart search</button>
+    <div class="ai-chat-container" id="aiChatContainer">
+        <div class="ai-chat-window" id="aiChatWindow">
+            <div class="chat-message" id="chatMessage">
+                <!-- MESSAGES HERE -->
+            </div>
+        </div>
+
+        <form id="aiChatBotForm" class="ai-chat-bot-form">
+            <input type="text" id="aiChatBotInput" placeholder="Ask a question">
+            <button id="aiChatBotBtn">Enter</button>
+        </form>
+    </div>
+
+
+    <!-- NOTIFICATION -->
     <div class="toast-notification" id="toastNotification">
         <span id="toastMessage"></span>
     </div>

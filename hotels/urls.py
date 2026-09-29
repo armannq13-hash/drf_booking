@@ -8,4 +8,5 @@ urlpatterns = [
     path('home/give/username/', views.give_username),
     path('home/dashboard/<str:property_type>/', views.hotel_dashboard),
     path('home/dashboard/rooms/<str:hotel_id>/', views.filter_rooms_dashboard),
+    path('api/chat-bot/', views.ai_chat_bot),
 ]

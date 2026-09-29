@@ -20,6 +20,85 @@ if (changeLangSelector){
 }
 
 
+// =============AI CHAT BOT==============
+function aiChatBot(){
+    // ==========BTN OPEN CHAT==========
+    const openAiChatBtn = document.getElementById('openAiChatBtn');
+    openAiChatBtn.addEventListener('click', () => {
+        const aiChatContainer = document.getElementById('aiChatContainer');
+        aiChatContainer.classList.toggle('active')
+    })
+    // ==================================
+    const aiChatBotForm = document.getElementById('aiChatBotForm');
+    const aiChatBotInput = document.getElementById('aiChatBotInput');
+
+    aiChatBotForm.addEventListener('submit', async(event) => {
+        event.preventDefault();
+        const userInput = aiChatBotInput.value.trim();
+        if (!userInput) return
+
+        appendMessage(userInput, 'user-message');
+
+        const loadingId = appendMessage('bot-message loading...', 'bot-message loading');
+        aiChatBotInput.value = ''
+
+        try{
+            const aiChatBotResponse = await fetch(`${BASE_URL}/api/chat-bot/`, {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_input: userInput
+                })
+            })
+
+            if (!aiChatBotResponse.ok){
+                console.log('AI CANNOT REPLY. ERROR')
+                document.getElementById(loadingId)?.remove()
+                appendMessage("Couldn't receive response from the server", 'bot-message error')
+                return 
+            }
+
+            const data = await aiChatBotResponse.json()
+            document.getElementById(loadingId)?.remove();
+
+            if (data.ai_response){
+                appendMessage(data.ai_response, 'bot-message');
+            }else{
+                appendMessage("Couldn't receive response", 'bot-message error');
+            }
+        } catch (error){
+            document.getElementById(loadingId)?.remove();
+            appendMessage('an error occured', 'bot-message error');
+        }
+    })
+}
+
+
+function appendMessage(text, className){
+    const chatMessage = document.getElementById('chatMessage');
+    const messageDiv = document.createElement('div')
+
+    const messageId = 'msg-' + Date.now() + Math.random();
+
+    messageDiv.id = messageId;
+    messageDiv.className = `message ${className}`
+
+    messageDiv.innerHTML = text.replace(/\n/g, '<br>');
+
+    chatMessage.appendChild(messageDiv);
+
+    chatMessage.scrollTop = chatMessage.scrollHeight;
+
+    return messageId
+    
+}
+
+aiChatBot()
+// ======================================
+
+
 
 // =========RENDER HOME PAGE FIRST RELOAD=========
 render_home_page();
@@ -147,10 +226,11 @@ function starter_html() {
         </div>
     `;
 
-    // -----STARTER HTML FOR HOME PAGE----
+    // -----STARTER HTML FOR HOME PAGE-----
     contentContainer.innerHTML = start_html;
     render_filter_sidebar();
     open_room_dashboard();
+
 }
 
 // ==============SEARCH BAR=================
