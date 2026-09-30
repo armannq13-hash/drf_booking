@@ -1,7 +1,11 @@
 import django
 import os
+from dotenv import load_dotenv
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", 'core.settings')
+load_dotenv()
+
+project_folder = os.getenv('DJANGO_PROJECT_FOLDER')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", f'{project_folder}.settings')
 django.setup()
 
 from bookings.models import Booking
@@ -22,7 +26,9 @@ def check_out_checker():
             booking.save()
             
             
-schedule.every().day.at("10:41").do(check_out_checker)
+# schedule.every().day.at("10:41").do(check_out_checker)
+
+schedule.every(1).minutes.do(check_out_checker)
 
 
 while True:

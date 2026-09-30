@@ -362,6 +362,7 @@ def ai_chat_bot(request):
         -- Pro-tips: Useful local customs, words/sentences, transport advice, rules that you must be aware of if any, or best times to visit spots to avoid crowds.
         
         
+        
         ##DATA INPUT:
         -- User Request: "{user_input}"
         -- Available Rooms (JSON format from database): {json.dumps(rooms_data, ensure_ascii=False, indent=2)}
