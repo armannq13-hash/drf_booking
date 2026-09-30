@@ -235,6 +235,11 @@ header > div {
     color: #b82808;
 }
 
+.booking-status.status-checkedOut {
+    background-color: #eae8e4;
+    color: rgba(108, 117, 125, 1)
+}
+
 /* Блок цены и кнопок */
 .booking-price {
     text-align: right;

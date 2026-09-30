@@ -15,8 +15,10 @@ export const text_translations = {
         // User Profile & Bookings Section
         myActiveBookings: "My active bookings",
         myCancelledBookings: "My cancelled bookings",
+        myCheckedOutBookings: "My checked out bookings",
         noActiveBookings: "No active bookings found",
         noCancelledBookings: "No cancelled bookings found",
+        noCheckedOutBookings: "No checked out bookings found",
         checkIn: "Check-in:",
         checkOut: "Check-out:",
         nightsCount: 'nights',
@@ -44,8 +46,10 @@ export const text_translations = {
         // User Profile & Bookings Section
         myActiveBookings: "Мои активные бронирования",
         myCancelledBookings: "Мои отмененные бронирования",
+        myCheckedOutBookings: "Мои завершенные бронирования",
         noActiveBookings: "Активные бронирования не найдены",
         noCancelledBookings: "Отмененные бронирования не найдены",
+        noCheckedOutBookings: "Завершенные бронирования не найдены",
         checkIn: "Заезд:",
         checkOut: "Выезд:",
         nightsCount:  'ночей',
@@ -73,8 +77,10 @@ export const text_translations = {
         // User Profile & Bookings Section
         myActiveBookings: "Менің белсенді брондауларым",
         myCancelledBookings: "Менің бас тартылған брондауларым",
+        myCheckedOutBookings: "Менің аяқталған брондауларым",
         noActiveBookings: "Белсенді брондаулар табылмады",
         noCancelledBookings: "Бас тартылған брондаулар табылмады",
+        noCheckedOutBookings: "Аяқталған брондаулар табылмады",
         checkIn: "Кіру:",
         checkOut: "Шығу:",
         nightsCount: 'түн',

@@ -63,19 +63,29 @@ class UserProfileAPIViewClass(APIView):
             status='cancelled'
         ).select_related('room', 'room__hotel')
         
+        checkedOut_reserves = Booking.objects.filter(
+            user=request.user,
+            status='checked_out'
+        ).select_related('room', 'room__hotel')
+        
         active_bookings = []
         cancelled_bookings = []
+        checkedOut_boookings = []
         
         for active_booking in active_reserves:
             active_bookings.append(add_dict(active_booking))
             
         for cancelled_booking in cancelled_reserves:
             cancelled_bookings.append(add_dict(cancelled_booking))
+            
+        for checkedOut_booking in checkedOut_reserves:
+            checkedOut_boookings.append(add_dict(checkedOut_booking))
 
         
         return Response({
             'active_bookings': active_bookings,
-            'cancelled_bookings': cancelled_bookings
+            'cancelled_bookings': cancelled_bookings,
+            'checkedOut_bookings': checkedOut_boookings
         }, status=status.HTTP_200_OK)
         
         

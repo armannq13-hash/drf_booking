@@ -40,11 +40,14 @@ async function render_user_profile_page() {
         const data = await response.json();
         const active_bookings = data.active_bookings || [];
         const cancelled_bookings = data.cancelled_bookings || [];
+        const checkedOut_bookings = data.checkedOut_bookings || [];
 
         let html_active = '';
         let html_cancelled = '';
+        let html_checkedOut = '';
 
-        
+
+        // ===========ACTIVE BOOKINGS===========
         active_bookings.forEach((booking, index) => {
             const isHidden = index >= 3 ? 'hidden' : ''; 
             html_active += `
@@ -76,6 +79,7 @@ async function render_user_profile_page() {
         }
 
        
+        // ==========CANCELLED BOOKINGS=========
         cancelled_bookings.forEach((booking, index) => {
             const isHidden = index >= 3 ? 'hidden' : '';
             html_cancelled += `
@@ -105,17 +109,57 @@ async function render_user_profile_page() {
             `;
         }
 
+        // ===========CHECKED OUT BOOKINGS=========
+        checkedOut_bookings.forEach((booking, index) => {
+            const isHidden = index >= 3 ? 'hidden' : '';
+            html_checkedOut += `
+                <div class="booking-card ${isHidden}">
+                    <img src="${booking.hotel_img}" alt="${booking.hotel_name}">
+                    <div class="booking-details">
+                        <div class="hotel-name">${booking.hotel_name}</div>
+                        <div class="room-type">${booking.room_title}</div>
+                        <div class="location">${booking.city}, ${booking.country}</div>
+                        <div class="dates-info">${t('checkIn')} ${booking.check_in} &mdash; ${t('checkOut')} ${booking.check_out}</div>
+                        <div class="booking-status status-checkedOut">${booking.status}</div>
+                    </div>
+                    <div class="booking-price">
+                        <div class="price-value">$${booking.price}</div>
+                        <div style="color: #666; font-size: 12px;">${booking.amount_nights} ${t('nightsCount')}</div>
+                    </div>
+                </div>
+            `;
+        });
+
+        if (checkedOut_bookings.length > 3) {
+            html_cancelled += `
+                <a class="toggle-booking-btn">
+                    <span class="btn-text">${t('showAll')} (${checkedOut_bookings.length - 3})</span>
+                    <span class="arrow">&#9660;</span>
+                </a>
+            `;
+        }
+
+
+
         const no_active = active_bookings.length <= 0 ? `<p>${t('noActiveBookings')}</p>` : '';
         const no_cancelled = cancelled_bookings.length <= 0 ? `<p>${t('noCancelledBookings')}</p>` : '';
+        const no_checkedOut = checkedOut_bookings.length <=0 ? `<p>${t('noCheckedOutBookings')}</p>` : '';
 
         
         document.getElementById('content').innerHTML = `
             <h1 class="content-title">${t('myActiveBookings')}</h1>
             ${no_active}
             <div class="booking-section">${html_active}</div><br><br>
+
+
             <h1 class="content-title">${t('myCancelledBookings')}</h1>
             ${no_cancelled}
-            <div class="booking-section">${html_cancelled}</div>
+            <div class="booking-section">${html_cancelled}</div><br>
+
+            <h1 class="content-title">${t('myCheckedOutBookings')}</h1>
+            ${no_checkedOut}
+            <div class="booking-section">${html_checkedOut}</div>
+
         `;
 
         
