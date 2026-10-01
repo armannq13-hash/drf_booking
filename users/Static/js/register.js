@@ -22,12 +22,13 @@ const registerBtn = document.getElementById('registerBtn');
 
 async function register_user() {
     const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const password2 = document.getElementById('password2').value;
     const phoneNumber = document.getElementById('phoneNumber').value;
     const isBusiness = document.getElementById('isBusinessCheck').checked;
 
-    if (!username || !password || !password2 || !phoneNumber){
+    if (!username || !password || !password2 || !phoneNumber || !email){
         showToast(`${t('fillAllFields')}`)
     }
 
@@ -39,6 +40,7 @@ async function register_user() {
             },
             body: JSON.stringify({
                 username: username,
+                email: email,
                 password: password,
                 phone_number: phoneNumber,
                 is_business: isBusiness,

@@ -1,13 +1,13 @@
 from rest_framework import serializers
 from .models import CustomUser
-from bookings.models import Booking
-from hotels.models import RoomType, Hotel
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = [
             'username',
+            'email',
             'password',
             'phone_number',
             'is_business'
@@ -20,7 +20,7 @@ class CustomUserSerializer(serializers.ModelSerializer):
         
     def create(self, validated_data):
         password = validated_data.pop('password')
-        user = CustomUser.objects.create(**validated_data)
+        user = CustomUser(**validated_data)
         
         user.set_password(password)
         
@@ -29,5 +29,8 @@ class CustomUserSerializer(serializers.ModelSerializer):
         return user
     
     
+class EmailTokenObtainPairSerializer(TokenObtainPairSerializer):
+    username_field = 'email'
+
 
     

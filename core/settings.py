@@ -152,9 +152,14 @@ REST_FRAMEWORK = {
     )
 }
 
+SIMPLE_JWT = {
+    'TOKEN_OBTAIN_SERIALIZER': 'users.serializers.EmailTokenObtainPairSerializer'
+}
+
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5500"
+    "http://127.0.0.1:5500",
+    "http://127.0.0.1:5501"
 ]
 
 MEDIA_URL = '/media/'

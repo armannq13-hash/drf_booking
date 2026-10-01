@@ -4,11 +4,13 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=20, unique=True)
-    phone_number = models.CharField(max_length=20)
-    password = models.CharField(max_length=50)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
     is_business = models.BooleanField(default=False)
     
-    REQUIRED_FIELDS = ['phone_number', 'password']
+    USERNAME_FIELD = 'email'
+    
+    REQUIRED_FIELDS = ['phone_number', 'username']
     
     def __str__(self):
-        return self.username
+        return self.email

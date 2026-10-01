@@ -22,7 +22,7 @@ if (changeLangSelector){
 const loginBtn = document.getElementById('loginBtn');
 
 async function login_user() {
-    const username = document.getElementById('usernameLogin').value;
+    const email = document.getElementById('emailLogin').value;
     const password = document.getElementById('passwordLogin').value;
 
     const response = await fetch(`${BASE_URL}/users/api/token/`, {
@@ -31,7 +31,7 @@ async function login_user() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            username: username,
+            email: email,
             password: password
         })
     })
