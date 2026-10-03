@@ -96,3 +96,6 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
    `python manage.py runserver`      
    `python scheduled_tasks.py`    
    Access the API locally at `http://127.0.0.1:8000/`.
+
+
+**Quick Website Review on youtube:** `Youtube video link: https://youtu.be/4FtNSLQLFi4`.
