@@ -21,6 +21,8 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
 * **Reservation System:** Complete booking logic with date-overlap validation and status tracking.
 * **Custom Admin Dashboard:** Tailored administration interface for managing users, properties, room inventories, and bookings.
 * **Media & Image Management:** Multi-image uploads for hotel rooms and properties.
+* **Email Verification:** Email verification via one-time code.
+* **Email Notification:** Notifies users before their reservation dates.
 
 ---
 
@@ -43,6 +45,8 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
 | `/home/filter/rooms/` | `GET` | Fetch rooms listings with filtering | No |
 | `/reserve/` | `POST` | Reserve room dates | Yes (JWT) |
 | `/api/chat-bot/` | `POST` | AI tour agent response | No |
+| `/api/verify/email/` | `POST` | Verifies email via one time code | No |
+
 
 ---
 
@@ -72,7 +76,14 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
    `DEEPL_API_KEY=your_deepl_api_key (you can get it in deepl.com)`    
    `DATABASE_PATH=your_database_absolute_path`    
    `GEMINI_API_KEY=your_gemini_api_key (you can get a free one on https://ai.google.dev/gemini-api/docs/api-key)`    
-   `GEMINI_MODEL=gemini_model_you_use`    
+   `DJANGO_PROJECT_FOLDER=your_project's_core_folder`    
+   `EMAIL_HOST_PASSWORD=your_email_app_password (NOT A REGULAR EMAIL PASSWORD!)`    
+   `EMAIL_HOST_USER=your_email (which will be used for sending emails)`    
+   `EMAIL_PORT=email_port_your_email_provider_use (example: for gmail it is 587)`    
+   `EMAIL_USE_TLS=True/False (depends on your email provider)`    
+   `EMAIL_HOST=your_email_provider (example: smtp.gmail.com)`    
+   
+   
    Ensure your frontend origin is added to `CORS_ALLOWED_ORIGINS` in Django settings (e.g., `http://localhost:5500` or `http://127.0.0.1:5500`).
 
 6. **Configure Frontend Base URL:**  
@@ -82,5 +93,6 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
    `python manage.py migrate`
 
 8. **Run the Development Server:**  
-   `python manage.py runserver`  
+   `python manage.py runserver`
+   `python scheduled_tasks.py`    
    Access the API locally at `http://127.0.0.1:8000/`.
