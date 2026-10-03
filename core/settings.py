@@ -134,11 +134,14 @@ STATIC_URL = "static/"
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    "default": {
-        "BACKEND": "django.core.mail.backends.console.EmailBackend",
-    },
-}
+
+# ==========EMAIL SETTINGS============
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# ========================
 
 AUTH_USER_MODEL = 'users.CustomUser'
 
@@ -152,20 +155,25 @@ REST_FRAMEWORK = {
     )
 }
 
+# ===========SIMPLE JWT AUTHENTICATION=============
 SIMPLE_JWT = {
     'TOKEN_OBTAIN_SERIALIZER': 'users.serializers.EmailTokenObtainPairSerializer'
 }
 
 
+# ===========CORS POLICE============
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:5500",
     "http://127.0.0.1:5501"
 ]
 
+# ========MEDIA SETTINGS===========
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
+
+# ==========LANGUAGES============
 LANGUAGES = [
     ('ru', 'Русский'),
     ('en', 'English'),

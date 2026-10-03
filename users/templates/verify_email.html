@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify email</title>
+    <link rel="stylesheet" href="/users/Static/css/verify_email.css">
+</head>
+
+<body>
+    <div id="verify-container" class="verify-wrapper">
+        <div class="verify-card">
+            <h2>Email verification</h2>
+            <p>We have sent a 6 digit code to your email, please verify it:</p>
+
+
+            <div class="otp-inputs">
+                <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*"
+                    autocomplete="one-time-code" />
+                <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*" />
+                <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*" />
+                <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*" />
+                <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*" />
+                <input type="text" maxlength="1" class="otp-input" inputmode="numeric" pattern="[0-9]*" />
+            </div>
+
+            <button id="verify-btn" class="verify-submit-btn" disabled>Подтвердить</button>
+            <div id="verify-error" class="error-message"></div>
+        </div>
+    </div>
+
+    <script type="module" src="/users/Static/js/verify_email.js"></script>
+</body>
+
+</html>

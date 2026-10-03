@@ -8,7 +8,7 @@ const currentLang = localStorage.getItem('user_language') || 'en';
 
 const changeLangSelector = document.getElementById('changeLangSelector');
 
-if (changeLangSelector){
+if (changeLangSelector) {
     changeLangSelector.value = currentLang;
 
     changeLangSelector.addEventListener('change', (event) => {
@@ -28,7 +28,7 @@ async function register_user() {
     const phoneNumber = document.getElementById('phoneNumber').value;
     const isBusiness = document.getElementById('isBusinessCheck').checked;
 
-    if (!username || !password || !password2 || !phoneNumber || !email){
+    if (!username || !password || !password2 || !phoneNumber || !email) {
         showToast(`${t('fillAllFields')}`)
     }
 
@@ -48,8 +48,9 @@ async function register_user() {
         })
 
         if (response.ok) {
+            localStorage.setItem('email', email)
             showToast('Success!', 'success')
-            window.location = "/hotels/templates/home.html"
+            window.location = "/users/templates/verify_email.html"
         }
     }
 }
@@ -59,6 +60,7 @@ registerBtn.addEventListener('click', (event) => {
     register_user()
 
 })
+
 
 
 // ===============TRANSLATING STATIC TEXT============

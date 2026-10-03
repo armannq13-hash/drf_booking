@@ -330,6 +330,7 @@ def ai_chat_bot(request):
         rooms_data.append({
             'room_title': room.room_title,
             'hotel_name': room.hotel.hotel_name,
+            'hotel_address': room.hotel.address,
             'room_description': room.room_description,
             'hotel_description': room.hotel.hotel_description,
             'country': room.hotel.country.name,
@@ -360,6 +361,9 @@ def ai_chat_bot(request):
         --  What to buy: Authentic local souvenirs, products, or markets worth visiting.
         --  Approximate local prices / Budget guide: Give realistic price estimates for meals, transport, or popular local experiences(in local currency or USD or if the user requested the specific currency).
         -- Pro-tips: Useful local customs, words/sentences, transport advice, rules that you must be aware of if any, or best times to visit spots to avoid crowds.
+        6. Related to 5th point: address is given with the available rooms json.If it is given, search for the address and use it to make your response more specific and accurate.
+        If the user asks for location they want near their room/hotel, use the address to be clear(example from the user: I want a beach near my hotel and many grocery stores).
+        Also list the main constructions near the hotel based on the address.
         
         
         
@@ -377,7 +381,7 @@ def ai_chat_bot(request):
            -- Usefull lifehacks etc
            
         !IMPORTANT: the response must not contain extra symbols like #, * etc.You can use emojis if needed
-        !IMPORTANT: Do not make the text too long! 
+        !IMPORTANT: Do not make the text too long! Keep it short, clean, and friendly 
         
     """
     

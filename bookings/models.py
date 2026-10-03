@@ -19,5 +19,5 @@ class Booking(models.Model):
     status = models.CharField(choices=STATUS_CHOICES, default='active')
     
     def __str__(self):
-        return f"{self.check_in}––{self.check_out} | {self.user.username} | {self.room.room_title} | {self.room.hotel.hotel_name}"
+        return f"{self.check_in}––{self.check_out} | {self.user.username if self.user.username else 'deleted_user'} | {self.room.room_title} | {self.room.hotel.hotel_name}"
     

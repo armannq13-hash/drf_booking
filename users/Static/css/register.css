@@ -248,6 +248,8 @@ body > p > a {
     background-color: #38a169;
 }
 
+
+
 @media (max-width: 480px) {
     .toast-notification {
         left: 16px;
