@@ -93,6 +93,6 @@ A full-stack accommodation reservation engine replicating core Booking.com workf
    `python manage.py migrate`
 
 8. **Run the Development Server:**  
-   `python manage.py runserver`
+   `python manage.py runserver`      
    `python scheduled_tasks.py`    
    Access the API locally at `http://127.0.0.1:8000/`.
