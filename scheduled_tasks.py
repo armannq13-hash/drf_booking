@@ -91,10 +91,8 @@ def day_left_checker():
         print(f'ERROR WHILE SENDING EMAIL: {e}')
             
             
-# schedule.every().day.at("10:41").do(check_out_checker)
-
-schedule.every(1).minutes.do(check_out_checker)
-schedule.every(1).minutes.do(day_left_checker)
+schedule.every().day.at("10:00").do(check_out_checker)
+schedule.every().day.at("10:00").do(day_left_checker)
 
 
 while True:
